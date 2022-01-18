@@ -2,5 +2,5 @@ key,value
 name,Human Disease Ontology (DOID)
 downloadUrl,https://data.bioontology.org/ontologies/DOID/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
 curie,DOID
-nodeFilename,Disease_doid.csv
-relationshipFilename,Disease-IS_A-Disease_doid.csv
+nodeFilename,Disease_doid_2021-12-15.csv
+relationshipFilename,Disease-IS_A-Disease_doid_2021-12-15.csv

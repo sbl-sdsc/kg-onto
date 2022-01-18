@@ -2,6 +2,6 @@ key,value
 name,Uber Anatomy Ontology (UBERON)
 downloadUrl,https://data.bioontology.org/ontologies/UBERON/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
 curie,uberon
-nodeFilename,Anatomy_uberon.csv
-relationshipFilename,Anatomy-IS_A-Anatomy_uberon.csv
+nodeFilename,Anatomy_uberon_2021-11-28.csv
+relationshipFilename,Anatomy-IS_A-Anatomy_uberon_2021-11-28.csv
 Obsolete,obsolete

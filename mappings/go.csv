@@ -1,0 +1,6 @@
+key,value
+name,Gene Ontology
+downloadUrl,https://data.bioontology.org/ontologies/GO/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+curie,go
+nodeFilename,Go_geneontology_2021-12-15.csv
+relationshipFilename,Go-IS_A-Go_geneontology_2021-12-15.csv

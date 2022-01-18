@@ -2,5 +2,5 @@ key,value
 name,Medical Subject Headings (MESH)
 downloadUrl,https://data.bioontology.org/ontologies/MESH/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
 curie,mesh
-nodeFilename,Category_mesh.csv
-relationshipFilename,Category-IS_A-Category_mesh.csv
+nodeFilename,Category_mesh_2021AB.csv
+relationshipFilename,Category-IS_A-Category_mesh_2021AB.csv
