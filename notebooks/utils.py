@@ -53,5 +53,6 @@ def parse_bioportal_csv(config):
     rels['to'] = curie + ':' + rels['to']
 
     rels = rels[['from','to']]
+    rels = rels.reset_index(drop=True)
 
     return nodes, rels

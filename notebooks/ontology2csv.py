@@ -88,6 +88,8 @@ def convert_ontology(mapping_filename):
     nodes = nodes.convert_dtypes()
 
     # Create metadata
+    
+    # Node metadata
     metadata = []
     for node, dtype, exmpl in zip(nodes.columns, nodes.dtypes, examples):
         metadata.append({'property': node, 'type': dtype, 'description': node, 'example': exmpl})
@@ -96,8 +98,13 @@ def convert_ontology(mapping_filename):
     # remove last row ('score')
     node_metadata = node_metadata[:-1]
 
-    metadata = [{'property': 'from', 'type': 'string', 'description': 'Id of source node', 'example': relationships['from'][0]},
-            {'property': 'to', 'type': 'string', 'description': 'Id of target node', 'example': relationships['to'][0]}]
+    # relationship metadata
+    source = node_metadata['example'][0]
+    example_rel = relationships[relationships['from'] == source].copy()
+    example_rel = example_rel.reset_index(drop=True)
+    
+    metadata = [{'property': 'from', 'type': 'string', 'description': 'Id of source node', 'example': example_rel['from'][0]},
+                {'property': 'to', 'type': 'string', 'description': 'Id of target node', 'example': example_rel['to'][0]}]
     
     relationship_metadata = pd.DataFrame(metadata)
 
