@@ -1,0 +1,10 @@
+key,value
+name,Chemical Entities of Biological Interest Ontology
+downloadUrl,https://data.bioontology.org/ontologies/CHEBI/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+curie,chebi
+nodeFilename,Compound_chebi.csv
+relationshipFilename,Compound-IS_A-Compound_chebi.csv
+http://purl.obolibrary.org/obo/chebi/formula,formula
+http://purl.obolibrary.org/obo/chebi/inchikey,inchiKey
+http://purl.obolibrary.org/obo/chebi/inchi,inchi
+http://purl.obolibrary.org/obo/chebi/mass,mass

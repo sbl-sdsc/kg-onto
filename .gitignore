@@ -100,12 +100,9 @@ spark-warehouse
 # test file
 ./test.py
 
-# Neo4j
-import.report
-logs/
-
 # Nemo
 config.yml
 
 # kg-onto
 data
+metadata

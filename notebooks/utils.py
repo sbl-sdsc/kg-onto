@@ -3,14 +3,22 @@
 
 # # Convert BioPortal Ontology to node and relationship files
 
-def parse_bioportal_csv(url, extra_properties, curie):
+def parse_bioportal_csv(config):
     import pandas as pd
     
     # core properties to be extracted from all ontology files
-    properties = {'Preferred Label': 'name',  'Preferred Label': 'name', 'Synonyms': 'synonyms', 'Definitions': 'definition', 'Class ID': 'url','Parents': 'parents'}
+    properties = {'Preferred Label': 'name',  'Preferred Label': 'name', 'Synonyms': 'synonyms', 
+                  'Definitions': 'definition', 'Class ID': 'url','Parents': 'parents'}
     
-    # append extra properties
-    properties.update(extra_properties)
+    url = config.query('key == "downloadUrl"').values[0][1]
+    curie = config.query('key == "curie"').values[0][1]
+    
+    # append extra properties  
+    config = config[5:]
+    for row in config.itertuples():
+        properties[row[1]] = row[2]
+
+    #properties.update(extra_properties)
     col_names = list(properties.keys())
     node_properties = ['id'] + list(properties.values())
     node_properties.remove('parents')
