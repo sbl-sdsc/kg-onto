@@ -1,0 +1,8 @@
+key,value
+name,National Center for Biotechnology Information (NCBI) Organismal Classification
+downloadUrl,https://data.bioontology.org/ontologies/NCBITAXON/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+curie,taxonomy
+nodeFilename,Organism_ncbi_taxonomy.csv
+relationshipFilename,Organism-IS_A-Organism_ncbi_taxonomy.csv
+DIV,division
+RANK,rank
