@@ -6,13 +6,12 @@ The current version converts biomedical ontologies from [BioPortal](https://biop
 
 BioPortal hosts more than 900 ontologies from the biomedical domain. Note, while the majority of ontologies in BioPortal are freely available, some ontologies have access restrictions or data use agreements and are not directly available from BioPortal, e.g., SNOWMED CT.
 
-## kg-onto Features
+## Features
 * Automated conversion process - no programming required
 * A mapping file is used to specify the ontology and properties to be exported
 * Both ontology classes and their properties are exported into data files
 * Data types of properties are inferred
 * The data files are property graph database system agnostic
-
 
 ## Overview
 The conversion of an ontology requires the following steps:
