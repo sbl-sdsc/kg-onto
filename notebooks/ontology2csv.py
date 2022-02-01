@@ -29,6 +29,7 @@ def example_score(row):
 
 def convert_ontology(mapping_filename):
     import os
+    import re
     import glob
     from pathlib import Path
     import pandas as pd
@@ -109,8 +110,19 @@ def convert_ontology(mapping_filename):
     relationship_metadata = pd.DataFrame(metadata)
 
     # Save metadata files
-    node_metadata.to_csv(os.path.join(NODE_METADATA, node_filename), index=False)
-    relationship_metadata.to_csv(os.path.join(RELATIONSHIP_METADATA, relationship_filename), index=False)
+    node_metadata_filename = re.split('\.|_', node_filename)[0]
+    node_metadata_filename += '.csv'
+
+    # split nodes from relationship
+    parts = relationship_filename.split('-', 2)
+    source_node = parts[0]
+    relationship = parts[1]
+    # remove any extra tag separated by underscore
+    target_node = parts[2].split('_')[0]
+    relationship_metadata_filename = source_node + '-' + relationship + '-' + target_node + '.csv'
+    
+    node_metadata.to_csv(os.path.join(NODE_METADATA, node_metadata_filename), index=False)
+    relationship_metadata.to_csv(os.path.join(RELATIONSHIP_METADATA, relationship_metadata_filename), index=False)
     
     
 parser = argparse.ArgumentParser(description='Ontology to CSV')
