@@ -47,7 +47,7 @@ def parse_bioportal_csv(config):
     rels['to'] = rels['to'].str[1]
     
     # replace http://www.w3.org/2002/07/owl#Thing parent with "root", the root of the ontology tree.
-    rels['to'] = rels['to'].str.replace('owl#Thing', 'root')
+    rels['to'] = rels['to'].str.replace('owl#Thing', curie + ':' + 'root')
 
     # add curie   
     rels['to'] = curie + ':' + rels['to']
