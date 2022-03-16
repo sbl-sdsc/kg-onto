@@ -81,7 +81,7 @@ def convert_ontology(mapping_filename):
     nodes = nodes.sort_values(by='score', ascending=False)
     # pick example from place 50. The top scoring example is often atypical.
     pick = min(50, nodes.shape[0])
-    example_row = nodes[50:]
+    example_row = nodes[pick:]
     examples = list(example_row.values[0])
 
 
