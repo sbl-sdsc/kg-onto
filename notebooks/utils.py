@@ -46,8 +46,16 @@ def parse_bioportal_csv(config):
     rels['to'] = rels['parents'].str.rsplit(pat="/", n=1)
     rels['to'] = rels['to'].str[1]
     
-    # replace http://www.w3.org/2002/07/owl#Thing parent with "root", the root of the ontology tree.
-    rels['to'] = rels['to'].str.replace('owl#Thing', curie + ':' + 'root')
+    
+    # add a root node, owl#Thing is the root node of ontologies (http://www.w3.org/2002/07/owl#Thing)
+    roots = rels.query('to == "owl#Thing"')
+    if roots.shape[0] > 0:
+        root_df = pd.DataFrame([{'id': curie + ':root', 'name': 'root', 'synonyms': 'root|' + curie + ' root',
+                                'definition': 'root node of ' + curie, 'url': ''}])
+        nodes = pd.concat([nodes, root_df])
+        # replace http://www.w3.org/2002/07/owl#Thing parent with "root", the root of the ontology tree.
+        rels['to'] = rels['to'].str.replace('owl#Thing', 'root')
+    
 
     # add curie   
     rels['to'] = curie + ':' + rels['to']
