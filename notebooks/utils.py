@@ -5,6 +5,7 @@
 
 def parse_bioportal_csv(config):
     import pandas as pd
+    import re
     
     # core properties to be extracted from all ontology files
     properties = {'Preferred Label': 'name',  'Preferred Label': 'name', 'Synonyms': 'synonyms', 
@@ -29,8 +30,10 @@ def parse_bioportal_csv(config):
     df.rename(columns=properties, inplace=True)
 
     # Prepare nodes
-    df['id'] = df['url'].str.rsplit(pat="/", n=1)
-    df['id'] = curie + ':' + df['id'].str[1]
+    #df['id'] = df['url'].str.rsplit(pat="/|#", n=1, expand=True)
+    #df['id'] = curie + ':' + df['id'].str[1]
+    df['id'] = df['url'].apply(lambda s: re.split('\W+', s)[-1])
+    df['id'] = curie + ':' + df['id']
 
     nodes = df[node_properties]
 
@@ -43,8 +46,9 @@ def parse_bioportal_csv(config):
     rels = rels.explode('parents')
 
     rels.rename(columns={'id': 'from'}, inplace=True)
-    rels['to'] = rels['parents'].str.rsplit(pat="/", n=1)
-    rels['to'] = rels['to'].str[1]
+    # rels['to'] = rels['parents'].str.rsplit(pat="/", n=1)
+    # rels['to'] = rels['to'].str[1]
+    rels['to'] = rels['parents'].apply(lambda s: re.split('\W+', s)[-1])
     
     
     # add a root node, owl#Thing is the root node of ontologies (http://www.w3.org/2002/07/owl#Thing)

@@ -1,0 +1,6 @@
+key,value
+name,Mondo Disease Ontology (Mondo)
+downloadUrl,https://data.bioontology.org/ontologies/MONDO/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+curie,mondo
+nodeFilename,Disease_mondo_2021-01-29.csv
+relationshipFilename,Disease-IS_A-Disease_mondo_2021-01-29.csv
